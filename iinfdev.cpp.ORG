@@ -1,0 +1,84 @@
+// ============================================================================
+// iinfdev.cpp - Мигрировано на RAD Studio 10.3.3
+// Базовая инфраструктура информаторов устройств
+// ============================================================================
+#include "iinfdev.h"
+#include <System.hpp>
+
+class null_device : public iinfdev
+{
+    virtual bool start() { return false; }
+    virtual void stop() { ; }
+    virtual bool device_params(void* param) { return false; }
+    virtual bool objects_params(void* param) { return false; }
+    virtual bool direct_request(void* data, bool is_request) { return false; }
+    virtual bool do_custom_request(void* data) { return false; }
+    virtual bool is_hardware_open() { return false; }
+
+    virtual void save_log(void* arg) { ; }
+};
+
+inf_container infs;
+null_device null;
+
+inf_container::inf_container()
+{
+    current = &null;
+}
+
+iinfdev* inf_container::get(int dev_id)
+{
+    iterator it = ind.find(dev_id);
+    if (it == ind.end()) return nullptr;  // RAD Studio 10.3.3: nullptr
+    return it->second;
+}
+
+void inf_container::add(iinfdev* inf)
+{
+    if (inf != nullptr) {  // RAD Studio 10.3.3: Проверка указателя
+        ind[inf->dev_id] = inf;
+    }
+}
+
+// Объявления функций создания устройств
+iinfdev* AltrnDeviceClone();
+iinfdev* GpsDeviceClone();
+iinfdev* GsmDeviceClone();
+iinfdev* GsmIpDeviceClone();
+iinfdev* RadioTraceDeviceClone();
+iinfdev* TetraDeviceClone();
+
+void inf_container::initialize()
+{
+    add(new null_device);
+    add(AltrnDeviceClone());
+    add(GpsDeviceClone());
+    add(GsmDeviceClone());
+    add(GsmIpDeviceClone());
+    add(RadioTraceDeviceClone());
+    add(TetraDeviceClone());
+    current = ind[0];
+}
+
+void inf_container::set_active(int dev_id)
+{
+    iinfdev* c = get(dev_id);
+    if (c == nullptr) current = &null;  // RAD Studio 10.3.3: nullptr
+    else current = c;
+}
+
+void inf_container::destruct()
+{
+    for (iterator i = ind.begin(); i != ind.end(); ++i)
+    {
+        if (i->second != nullptr) {  // RAD Studio 10.3.3: Проверка перед удалением
+            delete i->second;
+        }
+    }
+    ind.clear();
+}
+
+iinfdev* inf_container::get_active()
+{
+    return current;
+}

@@ -1,0 +1,186 @@
+﻿// ============================================================================
+// 2. shareddev.h - Общие утилиты и структуры данных
+// ============================================================================
+#ifndef shareddevH
+#define shareddevH
+#include <System.hpp>
+#include <string>
+#include <vector>
+#include <dutime/dutime.h>
+#include "../device_data/common_commands.h"
+
+char* strnstr(char* src, int len, char* ptrn);
+unsigned char calculate_check_sum(const char* str, int len);
+unsigned char calculate_simple_sum(const char* str, int len);
+
+char* FoundContentInStream(char* pContent, unsigned long uContentSize, char* szStart, char* szEnd, unsigned int *uTokenSize);
+char* FoundContentInStreamB(char* pContent, unsigned long uContentSize, char* szStart, char* szEnd, unsigned int *uTokenSize);
+//Находит два подряд шаблона
+char* FoundContentInStream2(char* pContent, unsigned long uContentSize,
+                            char* szStart1, char* szEnd1,
+                            char* szStart2, char* szEnd2,
+                            unsigned int *uTokenSize);
+
+#define OBJ_DEV_GPS 1
+#define OBJ_DEV_KVANT 2
+#define OBJ_DEV_ALTRN 3
+#define OBJ_DEV_MOBITEL 4
+#define OBJ_DEV_RADOM 5
+#define OBJ_DEV_THURAYA 6
+#define OBJ_DEV_KVANT_GSM 7
+#define OBJ_DEV_RADOM3 8
+#define OBJ_DEV_BENEFON 9
+#define OBJ_DEV_INTELLITRACK 10
+#define OBJ_DEV_BENEFON_BOX 11
+#define OBJ_DEV_AVIARM 12
+#define OBJ_DEV_PANTRACK 13
+#define OBJ_DEV_RADIO_TRACE 14
+#define OBJ_DEV_INTELLIX1 15
+#define OBJ_DEV_RVCL 16
+#define OBJ_DEV_EASYTRAC 17
+#define OBJ_DEV_TETRA 18
+#define OBJ_DEV_DEDAL 19
+#define OBJ_DEV_WONDEX 20
+//Cybergraphy
+#define OBJ_DEV_G200 21
+#define OBJ_DEV_DROZD 22
+#define OBJ_DEV_TELTONIKAGH 23
+#define OBJ_DEV_TELTONIKAFM 24
+#define OBJ_DEV_FENIX 25
+#define OBJ_DEV_INTELLIA1 26
+//NaviDev
+#define OBJ_DEV_ND 27
+//Mega GPS
+#define OBJ_DEV_MEGA_GPS_M25 28
+#define OBJ_DEV_INTELLIP1 29
+#define OBJ_DEV_PHANTOM 30
+#define OBJ_DEV_STARLINE_M15 31
+#define OBJ_DEV_BITREK 32
+#define OBJ_DEV_TELTONIKAFMB920 33
+//
+#define OBJ_DEV_WIALON_IPS 34
+
+struct fix_data {
+    bool archive;
+
+    double latitude;
+    double longitude;
+
+    unsigned int day;
+    unsigned int month;
+    unsigned int year;
+    bool date_valid;
+
+    unsigned int hour;
+    unsigned int minute;
+    double second;
+
+    double utc_time;
+    bool utc_time_valid;
+
+    double speed; bool speed_valid;
+    double height; bool height_valid;
+    double course; bool course_valid;
+
+    fix_data()
+    {
+        latitude = longitude = speed = height = course = 0.0;
+        day = month = year = hour = minute = 0;
+        second = 0;
+        date_valid = speed_valid = height_valid = course_valid = false;
+        archive = false;
+
+        utc_time = 0.0;
+        utc_time_valid = false;
+    }
+};
+
+int parseGGA(struct fix_data& fix, char* token);
+int parseRMC(struct fix_data& fix, char* token);
+int parseGLL(struct fix_data& fix, char* token);
+
+int parseShortRMC(struct fix_data& fix, const std::string token);
+
+int parseVTG(struct fix_data& fix, char* token);
+int parseZDA(struct fix_data& fix, char* token);
+
+void hex2bin(const char* str, unsigned char* bin);
+void bin2hex(const unsigned char* bin, int len, char* str);
+
+int crc_16(const unsigned char* data, int data_len);
+
+void seven2eight(const unsigned char* buf, unsigned ud_len, char* ud);
+int eight2seven(const unsigned char* ud, unsigned ud_len, unsigned char* buf);
+
+void mobitel_time2fix(unsigned int val, fix_data& fix);
+
+void parse_time2fix(double parse_time, fix_data& fix);
+void parse_date2fix(double parse_date, fix_data& fix);
+void nmea2degree(fix_data& fix);
+void degree2nmea(fix_data& fix);
+double mobitel2nmea(double val);
+
+bool build_fix_result(void* &data, int obj_id, const fix_data& fix);
+void* build_fix_result(int obj_id, const fix_data& fix);
+void fix2common_fix(const fix_data& from, VisiPlug::fix_data_t& to);
+
+double fix_time(const fix_data& fix);
+bool time_valid(time_t t);
+int max_day_in_month(int month, int year);
+void prev_day(tm& tt);
+void next_day(tm& tt);
+
+double knots2km(double val);
+
+//KIBEZ int build_number(const std::string& phone, std::vector<unsigned char>& vdata);
+int build_number(std::string phone, std::vector<unsigned char>& vdata);
+
+bool parse_gsm_number(unsigned char* data, unsigned int len, std::string& num);
+
+//Зона в секундах
+//Используется в GSM модеме
+time_t localtime(tm &tm, int time_zone);
+
+std::vector<unsigned char> gsm2iso_alphabet(const std::vector<unsigned char>& g);
+std::vector<unsigned char> iso2gsm_alphabet(const std::vector<unsigned char>& g);
+
+class bin_reader
+{
+    unsigned m_pos;
+
+    bin_reader(const bin_reader&);
+    void operator=(const bin_reader&);
+    void read(unsigned char* dst, unsigned count);
+public:
+    const std::vector<unsigned char>& data;
+
+    bin_reader(const std::vector<unsigned char>& _data) : data(_data)
+    {
+        m_pos = 0;
+    }
+
+    void process(unsigned char& val) { read(&val, 1); }
+    void process(unsigned short& val) { read(reinterpret_cast<unsigned char*>(&val), 2); }
+    void process(unsigned int& val) { read(reinterpret_cast<unsigned char*>(&val), 4); }
+    void process(std::vector<unsigned char>& val) { read(&*val.begin(), val.size()); }
+};
+
+class bin_writer
+{
+    bin_writer(const bin_writer&);
+    void operator=(const bin_writer&);
+    void write(const unsigned char* dst, unsigned count)
+    {
+        data.insert(data.end(), dst, dst + count);
+    }
+public:
+    bin_writer() {}
+    std::vector<unsigned char> data;
+
+    void process(unsigned char val) { write(&val, 1); }
+    void process(unsigned short val) { write(reinterpret_cast<const unsigned char*>(&val), 2); }
+    void process(unsigned int val) { write(reinterpret_cast<const unsigned char*>(&val), 4); }
+    void process(const std::vector<unsigned char>& val) { write(&*val.begin(), val.size()); }
+};
+
+#endif

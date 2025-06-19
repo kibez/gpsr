@@ -1,0 +1,61 @@
+ Volume in drive C has no label.
+ Volume Serial Number is CCFF-1628
+
+ Directory of C:\Jheck\VisiCAR\_gpsr_migration_1\__!!!!!!\!
+
+06/05/2025  06:08 PM    <DIR>          .
+06/05/2025  06:08 PM    <DIR>          ..
+06/05/2025  04:52 PM               153 !!!
+06/05/2025  06:06 PM             7,606 car.cpp_
+06/05/2025  04:00 PM             9,658 car.h_
+06/05/2025  04:33 PM             5,884 carcontainer.h_
+06/05/2025  05:58 PM               819 car_auto_answer.cpp
+06/05/2025  04:58 PM               755 car_auto_answer.h_
+06/05/2025  04:57 PM             2,390 car_poll_error.h_
+06/05/2025  04:01 PM            12,263 comport.h_
+06/05/2025  06:07 PM             1,377 condition_car.cpp_
+06/05/2025  04:43 PM             4,067 condition_car.h_
+06/05/2025  06:08 PM             4,770 custom_car.cpp_
+06/05/2025  04:41 PM            12,302 custom_car.h_
+06/05/2025  05:05 PM             9,183 custreq_queue.h_
+06/05/2025  05:57 PM             8,694 devices_data.cpp
+06/05/2025  04:58 PM             1,548 devices_data.h_
+06/05/2025  05:57 PM             6,221 devlog.cpp
+06/05/2025  03:58 PM             1,743 devlog.h_
+06/05/2025  05:04 PM             4,717 dirreq_queue.h_
+06/05/2025  04:56 PM             1,140 exception_stacker.h
+06/05/2025  05:07 PM             4,124 fix_1024_weak_error.h_
+06/05/2025  06:08 PM             2,148 fix_proxy.cpp_
+06/05/2025  05:49 PM            10,186 function_queue.cpp_
+06/05/2025  05:05 PM             1,398 function_queue.h_
+06/05/2025  03:57 PM             3,789 gps.c_
+06/05/2025  03:55 PM               862 gps.h_
+06/05/2025  05:24 PM             2,803 gsm_udp.h_
+06/05/2025  05:25 PM             1,683 igsm_modem.h_
+06/05/2025  05:51 PM             2,241 iinfdev.cpp
+06/05/2025  04:57 PM             1,688 iinfdev.h_
+06/05/2025  04:31 PM            13,619 infdev.h_
+06/05/2025  04:21 PM             2,145 informator.h_
+06/05/2025  05:04 PM             3,501 ireq_queue.h_
+06/05/2025  06:11 PM                 0 list.txt
+06/05/2025  05:51 PM             2,927 locale_constant.cpp
+06/05/2025  04:58 PM             2,139 locale_constant.h_
+06/05/2025  05:25 PM               648 localsrv_pub.h_
+06/05/2025  04:57 PM             1,205 log_callback.h_
+06/05/2025  05:25 PM             1,341 nulldev.h_
+06/05/2025  04:56 PM               701 pdu.h_
+06/05/2025  05:51 PM             2,279 pkr_param.cpp
+06/05/2025  03:58 PM             1,182 pkr_param.h_
+06/05/2025  04:44 PM             2,388 pollqueue.h_
+06/05/2025  04:38 PM             5,827 poll_error.h_
+06/05/2025  04:37 PM             9,323 req_queue.h_
+06/05/2025  03:57 PM             5,997 shareddev.h_
+06/05/2025  04:25 PM             7,105 singlethread.h_
+06/05/2025  05:04 PM             1,162 sms_queue.h_
+06/05/2025  04:02 PM             3,090 tcp_server.h_
+06/05/2025  04:01 PM             2,382 udp_server.h_
+06/05/2025  05:51 PM               485 ud_envir.cpp
+06/05/2025  04:56 PM               879 ud_envir.h_
+06/05/2025  04:49 PM               943 ___.bak
+              52 File(s)        197,480 bytes
+               2 Dir(s)  16,994,766,848 bytes free

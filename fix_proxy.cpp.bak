@@ -1,0 +1,114 @@
+// ============================================================================
+// fix_proxy.cpp_ - Мигрировано на RAD Studio 10.3.3
+// Реализация прокси для обработки FIX пакетов
+// ============================================================================
+
+#include <System.hpp>
+#pragma hdrstop
+#include "fix_proxy.h"
+#include "pokr\dbgprn.h"
+
+std::vector<TFixProxy*> TFixProxy::FDeleteLeter = std::vector<TFixProxy*>();
+
+TFixProxy::TFixProxy(const std::string& packet, const char* addr, unsigned short port) :
+    TThread(true),
+    tcp(new TIdTCPClient(nullptr)),  // RAD Studio 10.3.3: nullptr
+    FPacket(packet.c_str())
+{
+    if (tcp != nullptr) {  // RAD Studio 10.3.3: Проверка указателя
+        tcp->Host = addr;
+        tcp->Port = port;
+    }
+    
+    while (FDeleteLeter.size())
+    {
+        TFixProxy* fp = FDeleteLeter.front();
+        if (fp != nullptr) {  // RAD Studio 10.3.3: Проверка указателя
+            delete fp;
+        }
+        FDeleteLeter.erase(FDeleteLeter.begin());
+    }
+}
+
+__fastcall TFixProxy::~TFixProxy()
+{
+    if (tcp != nullptr) {  // RAD Studio 10.3.3: Проверка указателя и безопасное удаление
+        delete tcp;
+        tcp = nullptr;
+    }
+}
+
+void TFixProxy::send(const std::string& prefix)
+{
+    FPrefix = prefix;
+    Resume();
+}
+
+/*
+void __fastcall TFixProxy::Execute(void)
+{
+    if (tcp == nullptr) {  // RAD Studio 10.3.3: Проверка указателя
+        FDeleteLeter.push_back(this);
+        return;
+    }
+    
+    try
+    {
+        tcp->Connect();
+    }
+    catch (Exception& e)
+    {
+        dbg_print("TFixProxy::Execute> ERROR: %s", e.Message.c_str());
+    }
+    
+    if (tcp->Connected())
+    {
+        tcp->WriteLn((FPrefix + FPacket).c_str());
+        FAnswer = tcp->ReadLn().c_str();
+        tcp->Disconnect();
+        dbg_print("TFixProxy::Execute> RESULT: %s", FAnswer.c_str());
+        Synchronize(answed);
+        return;
+    }
+    FDeleteLeter.push_back(this);
+}
+*/
+void __fastcall TFixProxy::Execute(void)
+{
+    if (tcp == nullptr) {  // RAD Studio 10.3.3: Проверка указателя
+        FDeleteLeter.push_back(this);
+        return;
+    }
+
+    try
+    {
+        tcp->Connect();
+    }
+    catch (Exception& e)
+    {
+        dbg_print("TFixProxy::Execute> ERROR: %s", e.Message.c_str());
+    }
+
+    if (tcp->Connected())
+    {
+/*
+        tcp->IOHandler->WriteLn(System::String(FPrefix.c_str()) + System::String(FPacket.c_str()));
+        FAnswer = AnsiString(tcp->IOHandler->ReadLn()).c_str();
+*/        
+				tcp->WriteLn((FPrefix + FPacket).c_str());
+				FAnswer = tcp->ReadLn().c_str();				
+				tcp->Disconnect();
+        dbg_print("TFixProxy::Execute> RESULT: %s", FAnswer.c_str());
+        Synchronize(answed);
+        return;
+    }
+    FDeleteLeter.push_back(this);
+}
+
+
+void __fastcall TFixProxy::answed()
+{
+    SFixParams fp(FCar, FPacket, FAnswer, FFixPacket);
+    if (FCb) FCb(fp);
+    FDeleteLeter.push_back(this);
+}

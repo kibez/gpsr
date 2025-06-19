@@ -1,0 +1,713 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7594FA4C-1234-5678-9ABC-DEF123456789}</ProjectGuid>
+        <ProjectVersion>19.5</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <MainSource>gpsr.cpp</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+		<PropertyGroup>
+        <SRC_ROOT>C:\src</SRC_ROOT>
+				<SRC_SHARED>C:\src\shared</SRC_SHARED>
+        <COMP_ROOT>C:\Comp</COMP_ROOT>
+        <SERVER_ROOT>..\server</SERVER_ROOT>
+		</PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+		
+			<BCC_UseSTLport>false</BCC_UseSTLport>
+			<BCC_UseClassicSTL>false</BCC_UseClassicSTL>
+			<BCC_RuntimeLibrary>MultiThreadedDLL</BCC_RuntimeLibrary>
+		  <ProjectType>CppVCLApplication</ProjectType>
+				
+				
+				
+        <Multithreaded>true</Multithreaded>
+        <IncludePath>
+				drv_objects\altron\;
+				drv_objects\starline_m15\;
+				drv_objects\radom\;
+				drv_objects\navidev\;
+				drv_objects\mobitel\;
+				drv_objects\wialon_ips\;
+				drv_objects\rvcl\;
+				drv_objects\mega_gps_m25\;
+				drv_objects\benefon\;
+				drv_objects\teltonika\;
+				drv_objects\phantom\;
+				drv_objects\intellitrack\;
+				drv_objects\gps\;
+				drv_objects\wondex\;
+				drv_objects\radio_trace\;
+				drv_objects\tetra\;
+				drv_objects\pantrack\;
+				drv_objects\fenix\;
+				drv_objects\easytrac\;
+				drv_objects\kvant\;
+				drv_objects\g200\;
+				drv_objects\bitrek\;
+				drv_objects\dedal\;
+				drv_objects\aviarm\;
+				drv_objects\thuraya\;
+				drv_objects\drozd\;
+				drv_devices\;
+				..\device_data\;
+				..\device_data\tetra\;
+				..\device_data\intellix1\;
+				..\device_data\teltonika\;
+				..\device_data\drozd\;
+				..\device_data\dedal\;
+				..\device_data\radio_trace\;
+				..\device_data\mobitel\;
+				..\device_data\easytrac\;
+				..\device_data\fenix\;
+				..\device_data\intellitrac\;
+				..\device_data\rvcl\;
+				..\device_data\phantom\;
+				..\device_data\g200\;
+				..\device_data\wondex\;
+				..\device_data\bitrek\;
+				..\device_data\mega_gps_m25\;
+				..\device_data\nd\;
+				..\device_data\starline_m15\;
+				..\device_data\pantrack\;
+				..\device_data\teltonikaFMB920\;
+				C:\Comp\cpp\loki\;
+				..\server;
+				$(SRC_ROOT)\pokr;
+				$(SRC_ROOT)\misc;
+				$(ILINK_LibraryPath);
+				$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>drv_objects\altron\;drv_objects\starline_m15\;drv_objects\radom\;drv_objects\navidev\;drv_objects\mobitel\;drv_objects\wialon_ips\;drv_objects\rvcl\;drv_objects\mega_gps_m25\;drv_objects\benefon\;drv_objects\teltonika\;drv_objects\phantom\;drv_objects\intellitrack\;drv_objects\gps\;drv_objects\wondex\;drv_objects\radio_trace\;drv_objects\tetra\;drv_objects\pantrack\;drv_objects\fenix\;drv_objects\easytrac\;drv_objects\kvant\;drv_objects\g200\;drv_objects\bitrek\;drv_objects\dedal\;drv_objects\aviarm\;drv_objects\thuraya\;drv_objects\drozd\;..\device_data\tetra\;..\device_data\intellix1\;..\device_data\teltonika\;..\device_data\drozd\;..\device_data\dedal\;..\device_data\radio_trace\;..\device_data\mobitel\;..\device_data\easytrac\;..\device_data\fenix\;..\device_data\intellitrac\;..\device_data\rvcl\;..\device_data\phantom\;..\device_data\g200\;..\device_data\wondex\;C:\Comp\cpp\loki\;drv_devices\;..\device_data\bitrek\;..\device_data\mega_gps_m25\;..\device_data\;..\device_data\nd\;..\device_data\starline_m15\;..\device_data\pantrack\;..\device_data\teltonikaFMB920\;drv_objects\wialon_ips;drv_objects\bitrek;drv_objects\starline_m15;drv_objects\mega_gps_m25;drv_objects\navidev;drv_objects\fenix;drv_objects\teltonika;drv_objects\drozd;drv_objects\g200;drv_objects\wondex;drv_objects\dedal;drv_objects\tetra;drv_objects\easytrac;drv_objects\rvcl;drv_objects\pantrack;drv_objects\aviarm;drv_objects\phantom;drv_objects\intellitrack;drv_objects\benefon;drv_objects\kvant;drv_objects\thuraya;drv_objects\mobitel;drv_objects\radom;drv_objects\altron;drv_objects\radio_trace;drv_devices;drv_objects\gps;forms;..\device_data\teltonikaFMB920;..\device_data\bitrek;..\device_data\drozd;..\device_data\starline_m15;..\device_data\phantom;..\client\dispinstexe;..\device_data\common_device;..\device_data\nd;..\device_data\mega_gps_m25;..\device_data\fenix;..\device_data\teltonika;..\device_data\g200;..\device_data\wondex;..\device_data\tetra;..\device_data\dedal;..\device_data\easytrac;..\device_data\rvcl;..\device_data\intellix1;..\device_data\intellitrac;..\device_data\radio_trace;..\device_data;..\device_data\mobitel;..\device_data\pantrack;C:\Comp\cpp\loki;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <SanitizedProjectName>gpsr</SanitizedProjectName>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_AutoGenVersion>false</VerInfo_AutoGenVersion>
+        <VerInfo_MajorVer>1</VerInfo_MajorVer>
+        <VerInfo_MinorVer>6</VerInfo_MinorVer>
+        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Build>1</VerInfo_Build>
+        <VerInfo_Debug>true</VerInfo_Debug>
+        <VerInfo_PreRelease>false</VerInfo_PreRelease>
+        <VerInfo_Special>false</VerInfo_Special>
+        <VerInfo_Private>false</VerInfo_Private>
+        <VerInfo_DLL>false</VerInfo_DLL>
+        <VerInfo_Locale>1049</VerInfo_Locale>
+        <VerInfo_CodePage>1251</VerInfo_CodePage>
+        <VerInfo_Keys>CompanyName=KIGLI, Ltd.;FileDescription=VisiCAR GPS Receiver;FileVersion=1.6.1.1;InternalName=gpsr;LegalCopyright=;LegalTrademarks=;OriginalFilename=gpsr.exe;ProductName=VisiCAR;ProductVersion=2.5;Comments=</VerInfo_Keys>
+        <Defines>BOOST_ALL_NO_LIB;
+						BOOST_DATE_TIME_NO_LIB;BOOST_THREAD_NO_LIB;BOOST_REGEX_NO_LIB;BOOST_CHRONO_NO_LIB;
+				_MT;PANTRACK_LIB;MOBITEL_LIB;COMMON_DEVICE_LIB;RADIO_TRACE_LIB;INTELLITRAC_LIB;INTELLIX1_LIB;EASYTRAC_LIB;TELTONIKAFM_LIB;_DEBUG;$(Defines)</Defines>
+				
+				<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+        <AllPackageLibs>vcl.lib;rtl.lib;xmlrtl.lib</AllPackageLibs>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <PackageImports>inet;xmlrtl;shctl;bcb2kaxserver;IndySystem;IndyCore;IndyProtocols;dbxcds;dclocx;soaprtl;bcbie;nmfast;dbexpress;inetdbxpress;inetdbbde;dsnapcon;dsnapcrba;visualdbclx;teeqr;dss;tee;teedb;teeui;qrpt;bdecds;cds;ibxpress;vcldbx;bdertl;adortl;vcldb;vclx;bcbsmp;VclSmp;rtl;vcl;$(PackageImports)</PackageImports>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <PackageImports>inet;xmlrtl;shctl;IndySystem;IndyCore;IndyProtocols;dbxcds;dclocx;soaprtl;nmfast;dbexpress;inetdbxpress;dsnapcon;dsnapcrba;teeqr;dss;tee;teedb;teeui;qrpt;bdecds;cds;ibxpress;vcldbx;bdertl;adortl;vcldb;vclx;VclSmp;rtl;vcl;$(PackageImports)</PackageImports>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+        <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+        <DCC_Define>DEBUG</DCC_Define>
+        <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+        <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+        <BCC_StackFrames>true</BCC_StackFrames>
+        <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+        <TASM_Debugging>Full</TASM_Debugging>
+        <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+        <BCC_EnableCPPExceptions>true</BCC_EnableCPPExceptions>
+        <BCC_DisableFramePtrElimOpt>true</BCC_DisableFramePtrElimOpt>
+        <BCC_DisableSpellChecking>true</BCC_DisableSpellChecking>
+        <CLANG_DiagnosticFormat>msvc</CLANG_DiagnosticFormat>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+			<BCC_UseClassicSTL>false</BCC_UseClassicSTL>
+			<BCC_UseSTLport>false</BCC_UseSTLport>
+			<BCC_RuntimeLibrary>MultiThreaded</BCC_RuntimeLibrary>
+      <BCC_PCHUsage>None</BCC_PCHUsage>
+      <ILINK_LibraryPath>$(BDS)\lib\win32\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+      <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+      <ILINK_DisableIncrementalLinking>false</ILINK_DisableIncrementalLinking>
+      
+			<LinkPackageStatics>
+				vcl.lib;rtl.lib;xmlrtl.lib;
+				libboost_system-bcb-mt-d-1_39.lib;libboost_filesystem-bcb-mt-d-1_39.lib
+			</LinkPackageStatics>
+			
+			
+			<BT_BuildType>Debug</BT_BuildType>
+      <BCC_IncludePath>$(IncludePath);$(SRC_SHARED);$(SRC_SHARED)\dutime;$(COMP_ROOT)\cpp\;$(SRC_ROOT)\pokr\;$(SERVER_ROOT);$(SRC_ROOT)\misc\;$(BCC_IncludePath)</BCC_IncludePath>
+      <Manifest_File>(None)</Manifest_File>
+      <BCC_PCHInject>_globals.h</BCC_PCHInject>
+			<BCC_CppStandard>cpp11</BCC_CppStandard>			
+			<FinalOutputDir>.\bin\</FinalOutputDir>			
+			<BCC_IntermediateOutputDir>.\obj_Debug\</BCC_IntermediateOutputDir>
+			<ILINK_IntermediateOutputPath>.\obj_Debug\</ILINK_IntermediateOutputPath>
+			<IntermediateOutputDir>.\obj_Debug\</IntermediateOutputDir>
+			<ILINK_OutputFile>.\bin\$(TargetName)$(TargetExt)</ILINK_OutputFile>
+			
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <Defines>NDEBUG;$(Defines)</Defines>
+        <TASM_Debugging>None</TASM_Debugging>
+        <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
+        <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+        <BCC_DisableFramePtrElimOpt>false</BCC_DisableFramePtrElimOpt>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+    </PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+		
+<!-- остальные настройки... -->		
+<TargetName>gpsr_r</TargetName>
+<OutputName>gpsr_r</OutputName>
+<TargetFileName>gpsr_r.exe</TargetFileName>
+		
+		
+				<LinkPackageImports>rtl.bpi;vcl.bpi;vclx.bpi;shctl.bpi;bcbsmp.bpi</LinkPackageImports>
+				<LinkPackageStatics>
+					libboost_system-bcb-mt-1_39.lib;libboost_filesystem-bcb-mt-1_39.lib
+				</LinkPackageStatics>				
+				
+				
+				<ILINK_LibraryPath>$(BDS)\lib\win32\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+				<ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+				<BCC_IncludePath>$(IncludePath);$(SRC_SHARED);$(SRC_SHARED)\dutime;$(COMP_ROOT)\cpp\;$(SRC_ROOT)\pokr\;$(SERVER_ROOT);$(SRC_ROOT)\misc\;$(BCC_IncludePath)</BCC_IncludePath>
+				<Manifest_File>(None)</Manifest_File>
+				<BCC_PCHInject>_globals.h</BCC_PCHInject>
+				<BCC_CppStandard>cpp11</BCC_CppStandard>				
+				<FinalOutputDir>.\bin\</FinalOutputDir>
+				<BCC_IntermediateOutputDir>.\obj_Release\</BCC_IntermediateOutputDir>
+				<ILINK_IntermediateOutputPath>.\obj_Release\</ILINK_IntermediateOutputPath>
+				<IntermediateOutputDir>.\obj_Release\</IntermediateOutputDir>
+				<ILINK_OutputFile>.\bin\$(TargetName)$(TargetExt)</ILINK_OutputFile>
+		</PropertyGroup>
+		
+		
+		
+    <ItemGroup>
+      
+        <CppCompile Include="car.cpp">
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="car_auto_answer.cpp">
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="condition_car.cpp">
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="custom_car.cpp">
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="devices_data.cpp">
+            <BuildOrder>16</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="devlog.cpp">
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="fix_proxy.cpp">
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="form_gps_log_date.cpp">
+            <Form>formGpsLogDate</Form>
+            <FormType>dfm</FormType>
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="form_send_sms.cpp">
+            <Form>formSendSMS</Form>
+            <FormType>dfm</FormType>
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="function_queue.cpp">
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="gps.cpp">
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="gpsr.cpp">
+            <BuildOrder>0</BuildOrder>
+        </CppCompile>
+        <ResFiles Include="gpsr.res">
+            <BuildOrder>97</BuildOrder>
+        </ResFiles>
+				
+<CppCompile Include="boost_gregorian_stub.cpp">
+    <BuildOrder>98</BuildOrder>
+</CppCompile>				
+				
+				
+        <CppCompile Include="gpsr_parameters.cpp">
+            <Form>formParamters</Form>
+            <FormType>dfm</FormType>
+            <BuildOrder>23</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="iinfdev.cpp">
+            <BuildOrder>1</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="informator.cpp">
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="locale_constant.cpp">
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="logpass_dialog.cpp">
+            <Form>LogpassDialog</Form>
+            <FormType>dfm</FormType>
+            <BuildOrder>19</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Main.cpp">
+            <Form>MainForm</Form>
+            <FormType>dfm</FormType>
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="pkr_param.cpp">
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="save_log_dialog.cpp">
+            <Form>SaveLogDialog</Form>
+            <FormType>dfm</FormType>
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="shareddev.cpp">
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="tcp_server.cpp">
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="udp_server.cpp">
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ud_envir.cpp">
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <FormResources Include="logpass_dialog.dfm"/>
+        <FormResources Include="Main.dfm"/>
+        <FormResources Include="gpsr_parameters.dfm"/>
+        <FormResources Include="save_log_dialog.dfm"/>
+        <FormResources Include="form_gps_log_date.dfm"/>
+        <FormResources Include="form_send_sms.dfm"/>
+				
+				
+				
+				
+				
+				
+        <CppCompile Include="drv_devices\device_gps.cpp">
+            <BuildOrder>26</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="drv_devices\device_gsm.cpp">
+            <BuildOrder>25</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="drv_devices\device_gsm_udp.cpp">
+            <BuildOrder>27</BuildOrder>
+        </CppCompile>
+				
+				
+        <CppCompile Include="drv_devices\device_altrn.cpp">
+            <BuildOrder>32</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="drv_devices\device_radio_trace.cpp">
+            <BuildOrder>29</BuildOrder>
+        </CppCompile>
+			
+		
+        <CppCompile Include="drv_objects\gps\obj_gps.cpp">
+            <BuildOrder>100</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="drv_objects\mobitel\obj_mobitel.cpp">
+            <BuildOrder>101</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\mobitel\mobitel_commands.cpp">
+            <BuildOrder>102</BuildOrder>
+        </CppCompile>
+				
+        <CppCompile Include="drv_objects\radom\obj_radom.cpp">
+            <BuildOrder>103</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\radom\radom_commands.cpp">
+            <BuildOrder>102</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="drv_objects\radom\obj_radom3.cpp">
+            <BuildOrder>104</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\radom3\radom3_commands.cpp">
+            <BuildOrder>102</BuildOrder>
+        </CppCompile>
+				
+        <CppCompile Include="drv_objects\thuraya\obj_thuraya.cpp">
+            <BuildOrder>105</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\thuraya\thuraya_commands.cpp">
+            <BuildOrder>102</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="drv_objects\altron\obj_altrn.cpp">
+            <BuildOrder>132</BuildOrder>
+        </CppCompile>
+
+
+        <CppCompile Include="..\device_data\common_commands.cpp">
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
+				
+        <CppCompile Include="drv_objects\kvant\obj_kvant_gsm.cpp">
+            <BuildOrder>94</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="drv_objects\benefon\obj_benefon.cpp">
+            <BuildOrder>94</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="drv_objects\benefon\obj_benefon_box.cpp">
+            <BuildOrder>94</BuildOrder>
+        </CppCompile>		
+				
+        <CppCompile Include="drv_objects\intellitrac\obj_intellitrack.cpp">
+            <BuildOrder>49</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\intellitrac\intellitrac_commands.cpp">
+            <BuildOrder>43</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\intellitrac\intellitrac_notify.cpp">
+            <BuildOrder>44</BuildOrder>
+        </CppCompile>
+
+<!-- KIBEZ					
+        <CppCompile Include="drv_objects\intellitrac\obj_intellia1.cpp">
+            <BuildOrder>49</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\intellitrac\intellia1_commands.cpp">
+            <BuildOrder>49</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\intellitrac\intellia1_notify.cpp">
+            <BuildOrder>48</BuildOrder>
+        </CppCompile>
+				
+        <CppCompile Include="drv_objects\intellitrac\obj_intellip1.cpp">
+            <BuildOrder>49</BuildOrder>
+        </CppCompile>
+				
+			
+        <CppCompile Include="drv_objects\intellitrac\obj_intellix1.cpp">
+            <BuildOrder>49</BuildOrder>
+        </CppCompile>
+				
+        <CppCompile Include="..\device_data\intellix1\intellix1_commands.cpp">
+            <BuildOrder>46</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="..\device_data\nd\nd_commands.cpp">
+            <BuildOrder>86</BuildOrder>
+        </CppCompile>
+
+
+        <CppCompile Include="drv_objects\device_tetra.cpp">
+            <BuildOrder>62</BuildOrder>
+        </CppCompile>
+KIBEZ -->
+
+
+        <CppCompile Include="drv_objects\radio_trace\obj_radio_trace.cpp">
+            <BuildOrder>62</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="drv_objects\easytrac\obj_easytrac.cpp">
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\easytrac\easytrac_commands.cpp">
+            <BuildOrder>60</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\easytrac\easytrac_notify.cpp">
+            <BuildOrder>61</BuildOrder>
+        </CppCompile>
+
+
+        <CppCompile Include="drv_objects\phantom\obj_phantom.cpp">
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\phantom\phantom_commands.cpp">
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\phantom\phantom_notify.cpp">
+            <BuildOrder>53</BuildOrder>
+        </CppCompile>
+
+
+        <CppCompile Include="drv_objects\aviarm\obj_aviarm.cpp">
+            <BuildOrder>152</BuildOrder>
+        </CppCompile>
+
+
+        <CppCompile Include="drv_objects\pantrack\obj_pantrack.cpp">
+            <BuildOrder>152</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\pantrack\pantrack_commands.cpp">
+            <BuildOrder>56</BuildOrder>
+        </CppCompile>
+
+
+        <CppCompile Include="drv_objects\g200\obj_g200.cpp">
+            <BuildOrder>152</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\g200\g200_commands.cpp">
+            <BuildOrder>71</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\g200\g200_notify.cpp">
+            <BuildOrder>72</BuildOrder>
+        </CppCompile>
+
+
+<!-- KIBEZ				
+
+        <CppCompile Include="drv_objects\wondex\obj_wondex.cpp">
+            <BuildOrder>152</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="..\device_data\wondex\wondex_commands.cpp">
+            <BuildOrder>68</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\wondex\wondex_notify.cpp">
+            <BuildOrder>69</BuildOrder>
+        </CppCompile>
+
+
+
+
+        <CppCompile Include="drv_objects\g200\obj_g200.cpp">
+            <BuildOrder>152</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\g200\g200_commands.cpp">
+            <BuildOrder>71</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\g200\g200_notify.cpp">
+            <BuildOrder>72</BuildOrder>
+        </CppCompile>
+				
+
+        <CppCompile Include="drv_objects\dedal\obj_dedal.cpp">
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\dedal\dedal_commands.cpp">
+            <BuildOrder>66</BuildOrder>
+        </CppCompile>
+
+        <CppCompile Include="drv_objects\rvcl\obj_rvcl.cpp">
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\rvcl\rvcl_commands.cpp">
+            <BuildOrder>58</BuildOrder>
+        </CppCompile>
+
+
+
+        <CppCompile Include="..\device_data\bitrek\bitrek_commands.cpp">
+            <BuildOrder>94</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\drozd\drozd_notify.cpp">
+            <BuildOrder>74</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\fenix\fenix_commands.cpp">
+            <BuildOrder>84</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\mega_gps_m25\mega_gps_m25_commands.cpp">
+            <BuildOrder>88</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\mega_gps_m25\mega_gps_m25_notify.cpp">
+            <BuildOrder>89</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\radio_trace\radio_trace_notify.cpp">
+            <BuildOrder>31</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\starline_m15\starline_m15_commands.cpp">
+            <BuildOrder>91</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\starline_m15\starline_m15_notify.cpp">
+            <BuildOrder>92</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\teltonikaFMB920\teltonikaFMB920_commands.cpp">
+            <BuildOrder>82</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\teltonika\teltonikaFM_commands.cpp">
+            <BuildOrder>79</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\teltonika\teltonikaFM_notify.cpp">
+            <BuildOrder>80</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\teltonika\teltonikaGH12_commands.cpp">
+            <BuildOrder>76</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\teltonika\teltonikaGH12_notify.cpp">
+            <BuildOrder>77</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\device_data\tetra\tetra_commands.cpp">
+            <BuildOrder>64</BuildOrder>
+        </CppCompile>
+				
+				
+KIBEZ -->
+				
+				
+				
+				
+				
+        <CppCompile Include="C:\Comp\cpp\loki\SmallObj.cpp">
+            <BuildOrder>96</BuildOrder>
+        </CppCompile>
+				<LibFiles Include="C:\src\shared\md5\s_md5.lib" />
+				<LibFiles Include="C:\src\pokr\libpokr\libpokr.lib" />
+				<LibFiles Include="C:\src\pokr\pokr\s_pokr.lib" />
+				<LibFiles Include="C:\src\pokr\pokrpak\s_pokrpak.lib" />
+				<LibFiles Include="..\server\condition\s_condition.lib" />
+				<LibFiles Include="..\server\custom_request\s_custom_request.lib" />
+				<LibFiles Include="C:\src\shared\dutime\s_dutime.lib" />
+				
+				
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+        <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+        <BorlandProject>
+            <CPlusPlusBuilder.Personality>
+                <Source>
+                    <Source Name="MainSource">gpsr.cpp</Source>
+                </Source>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+                    <VersionInfo Name="AutoGenVersion">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">1</VersionInfo>
+                    <VersionInfo Name="MinorVer">6</VersionInfo>
+                    <VersionInfo Name="Release">1</VersionInfo>
+                    <VersionInfo Name="Build">1</VersionInfo>
+                    <VersionInfo Name="Debug">True</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1049</VersionInfo>
+                    <VersionInfo Name="CodePage">1251</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName">KIGLI, Ltd.</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileDescription">VisiCAR GPS Receiver</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileVersion">1.6.1.1</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName">gpsr</VersionInfoKeys>
+                    <VersionInfoKeys Name="LegalCopyright"/>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename">gpsr.exe</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductName">VisiCAR</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductVersion">2.5</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                </VersionInfoKeys>
+                <Debugging>
+                    <Debugging Name="DebugSourceDirs">$(BDS)\source\vcl;C:\src\pokr\pokr\;C:\Jheck\VisiCAR\server\condition\;C:\src\pokr\pokrpak\</Debugging>
+                </Debugging>
+                <Parameters>
+                    <Parameters Name="RunParams">--start_as st1</Parameters>
+                    <Parameters Name="Launcher"/>
+                    <Parameters Name="UseLauncher">False</Parameters>
+                    <Parameters Name="DebugCWD"/>
+                    <Parameters Name="HostApplication"/>
+                    <Parameters Name="RemoteHost"/>
+                    <Parameters Name="RemotePath"/>
+                    <Parameters Name="RemoteLauncher"/>
+                    <Parameters Name="RemoteCWD"/>
+                    <Parameters Name="RemoteDebug">False</Parameters>
+                </Parameters>
+                <Compiler>
+                    <Compiler Name="ShowInfoMsgs">0</Compiler>
+                    <Compiler Name="LinkDebugVcl">0</Compiler>
+                    <Compiler Name="LinkCGLIB">0</Compiler>
+                </Compiler>
+                <CORBA>
+                    <CORBA Name="AddServerUnit">1</CORBA>
+                    <CORBA Name="AddClientUnit">1</CORBA>
+                    <CORBA Name="PrecompiledHeaders">1</CORBA>
+                </CORBA>
+                <Language>
+                    <Language Name="ActiveLang"/>
+                    <Language Name="ProjectLang">$00000419</Language>
+                    <Language Name="RootDir"/>
+                </Language>
+                <ProjectProperties>
+                    <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+                    <ProjectProperties Name="ManagePaths">True</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
+                </ProjectProperties>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\RtmRxCtl260.bpl">RX Library Component and Tools Package</Excluded_Packages>
+                </Excluded_Packages>
+            </CPlusPlusBuilder.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

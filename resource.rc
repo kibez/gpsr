@@ -1,0 +1,220 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_MAIN DIALOG DISCARDABLE  0, 0, 299, 175
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Станція спостерігання за мобільними об'єктами"
+MENU IDR_MENU_MAIN
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT_DUMP,7,7,285,161,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | 
+                    WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_DIALOG_LOAD_LOG DIALOG DISCARDABLE  0, 0, 222, 71
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Параметри завантаження"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,165,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,165,24,50,14
+    EDITTEXT        IDC_EDIT_YEAR,7,30,21,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_MONTH,31,30,15,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DAY,49,30,16,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Початкова дата:",IDC_STATIC,9,9,56,8
+    LTEXT           "ГГГГ/ММ/ДД",IDC_STATIC,11,20,48,8
+    LISTBOX         IDC_LIST_OBJ,80,22,80,41,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Дія для об'єкта:",IDC_STATIC,80,9,80,8
+END
+
+IDD_DIALOG_LOG_PROGRESS DIALOG DISCARDABLE  0, 0, 207, 47
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Завантаження данних"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,77,25,50,14
+    CONTROL         "Progress1",IDC_PROGR,"msctls_progress32",WS_BORDER,13,7,
+                    180,14
+END
+
+IDD_DIALOG_AUTH_SETUP DIALOG DISCARDABLE  0, 0, 256, 105
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Параметри аутентифікації"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,73,84,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,147,84,50,14
+    CONTROL         "При старі запитувати логін та пароль",
+                    IDC_RADIO_LOGIN_PASSWORD,"Button",BS_AUTORADIOBUTTON,15,
+                    23,142,10
+    CONTROL         "Використовувати файл з ключом:",IDC_RADIO_KEY,"Button",
+                    BS_AUTORADIOBUTTON,15,35,130,10
+    LTEXT           "Параметри наберуть сили при наступному старті програми",
+                    IDC_STATIC,15,8,226,13
+    EDITTEXT        IDC_EDIT_KEY_FILE,31,46,196,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTONKEY_FILE,228,46,15,14
+    PUSHBUTTON      "Експортувати в цей файл діючий ключ",
+                    IDC_BUTTON_KEY_EXPORT,51,63,151,14
+END
+
+IDD_DIALOG_LOGPASS DIALOG DISCARDABLE  0, 0, 154, 71
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Аутентифікація"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,97,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,97,26,50,14
+    LTEXT           "Логін:",IDC_STATIC,7,7,21,8
+    EDITTEXT        IDC_EDIT_LOGIN,7,17,73,14,ES_AUTOHSCROLL
+    LTEXT           "Пароль:",IDC_STATIC,7,39,28,8
+    EDITTEXT        IDC_EDIT_PASSWORD,7,50,73,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 292
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+
+    IDD_DIALOG_LOAD_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 64
+    END
+
+    IDD_DIALOG_LOG_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 200
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+
+    IDD_DIALOG_AUTH_SETUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 249
+        TOPMARGIN, 8
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_DIALOG_LOGPASS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 147
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 64
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU_MAIN MENU DISCARDABLE 
+BEGIN
+    POPUP "&Команди"
+    BEGIN
+        MENUITEM "&Імпорт координат...",        IDM_SAVE_LOG
+        MENUITEM "&Отримання конфігурації...",  IDM_REMOTE_CFG
+    END
+    POPUP "&Параметри"
+    BEGIN
+        MENUITEM "&Аутентифікація...",          IDM_AUTH_PARAM
+    END
+END
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
